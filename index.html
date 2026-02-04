@@ -1,32 +1,104 @@
-<script>
-  const noBtn = document.getElementById("no");
-  const card = document.querySelector(".card");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will you be my Valentine?</title>
 
-  function moveButton() {
-    const maxX = card.clientWidth - noBtn.clientWidth;
-    const maxY = card.clientHeight - noBtn.clientHeight;
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffe6ee;
+      font-family: Arial, sans-serif;
+    }
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+      width: 300px;
+    }
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-  }
+    h2 {
+      margin-bottom: 30px;
+    }
 
-  // Desktop
-  noBtn.addEventListener("mouseover", moveButton);
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
 
-  // Mobile
-  noBtn.addEventListener("touchstart", function (e) {
-    e.preventDefault(); // prevents accidental click
-    moveButton();
-  });
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
 
-  // Extra safety
-  noBtn.addEventListener("click", moveButton);
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
 
-  function yesClicked() {
-    document.body.innerHTML =
-      "<h1 style='color:#ff4d6d;text-align:center;margin-top:40vh'>Yay! 💕🥰</h1>";
-  }
-</script>
+    #no {
+      position: absolute;
+      background-color: #ccc;
+      color: black;
+      left: 120px;
+      top: 60px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2>Will you be my Valentine? 💖</h2>
+
+    <div class="buttons">
+      <button id="yes" onclick="yesClicked()">Yes</button>
+      <button id="no">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const card = document.querySelector(".card");
+
+    function moveButton() {
+      const maxX = card.clientWidth - noBtn.clientWidth;
+      const maxY = card.clientHeight - noBtn.clientHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    // Desktop
+    noBtn.addEventListener("mouseover", moveButton);
+
+    // Mobile
+    noBtn.addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      moveButton();
+    });
+
+    // Extra safety
+    noBtn.addEventListener("click", moveButton);
+
+    function yesClicked() {
+      document.body.innerHTML =
+        "<h1 style='color:#ff4d6d;text-align:center;margin-top:40vh'>Yay! 💕🥰</h1>";
+    }
+  </script>
+
+</body>
+</html>
