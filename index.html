@@ -1,0 +1,32 @@
+<script>
+  const noBtn = document.getElementById("no");
+  const card = document.querySelector(".card");
+
+  function moveButton() {
+    const maxX = card.clientWidth - noBtn.clientWidth;
+    const maxY = card.clientHeight - noBtn.clientHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  // Desktop
+  noBtn.addEventListener("mouseover", moveButton);
+
+  // Mobile
+  noBtn.addEventListener("touchstart", function (e) {
+    e.preventDefault(); // prevents accidental click
+    moveButton();
+  });
+
+  // Extra safety
+  noBtn.addEventListener("click", moveButton);
+
+  function yesClicked() {
+    document.body.innerHTML =
+      "<h1 style='color:#ff4d6d;text-align:center;margin-top:40vh'>Yay! 💕🥰</h1>";
+  }
+</script>
